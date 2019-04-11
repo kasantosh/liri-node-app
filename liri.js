@@ -19,15 +19,10 @@ switch (action) {
   case "spotify-this-song":
     //go to spotify
     var spotify = new Spotify(keys.spotify);
-    console.log(keys.spotify);
-    spotify
-      .search({ type: "track", query: "All the Small Things" })
-      .then(function(response) {
-        console.log(response.href);
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
+    // console.log(keys.spotify);
+    console.log(query);
+    spotifySong(query);
+
     break;
   case "movie-this":
     //go to axios OMDB
@@ -35,35 +30,50 @@ switch (action) {
 
     break;
   case "do-what-it-says":
-    //go to spotify
+    //read random.txt file and fetch results
     fs.readFile("random.txt", "utf-8", function(err, data) {
       if (err) {
         return console.log("Error");
       }
-      //do-what-it-says
       var queryArray = data.split(",");
       // console.log(data);
       // console.log(queryArray);
-      var dothisAction = queryArray[0];
-      var dothisQuery = queryArray[1];
-      // console.log(dothisAction, dothisQuery);
-      query = dothisQuery.split(" ");
-      query = query[0];
-      // console.log(query);
-      concertThis(query);
-
-      // var  = q.split(" ");
-      // console.log(b);
-
-      // switch (a) {
-      //   case "movie-this":
-      //     movieThis();
-      //     break;
-      //   case "concert-this":
-      //     concertThis(b[0]);
-      // }
+      query = queryArray[1].replace(/"/g, "");
+      console.log(query);
+      switch (queryArray[0]) {
+        // query = query[0];
+        // console.log(query);
+        case "concert-this":
+          concertThis(query);
+          break;
+        case "movie-this":
+          movieThis(query);
+          break;
+        case "spotify-this-song":
+          // console.log(query);
+          spotifySong(query);
+          break;
+      }
     });
     break;
+}
+
+function spotifySong(song) {
+  spotify
+    .search({ type: "track", query: song })
+    .then(function(response) {
+      console.log("------------------------------");
+      console.log("Name of Song: " + song);
+      console.log("Artist: " + response.tracks.items[0].album.artists[0].name);
+      console.log("Album: " + response.tracks.items[0].album.name);
+      console.log(
+        "Preview Link: " + response.tracks.items[0].external_urls.spotify
+      );
+      console.log("------------------------------");
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 }
 
 function movieThis(query1) {
