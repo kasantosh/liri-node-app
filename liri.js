@@ -39,7 +39,7 @@ switch (action) {
       // console.log(data);
       // console.log(queryArray);
       query = queryArray[1].replace(/"/g, "");
-      console.log(query);
+      // console.log(query);
       switch (queryArray[0]) {
         // query = query[0];
         // console.log(query);
