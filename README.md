@@ -22,7 +22,3 @@ There are 4 different commands from the command-line
 1. do-what-this-says -
    Reads from the random.txt file and does what the text file says based on the commands given above
    ![](/images/do-what-screenshot.jpg)
-
-### Bugs
-
-When the random.txt is changed to "spotify-this-song", it throws an error for the function (spotifySong()) while the same function works from the commandline. Trying to figure this out.

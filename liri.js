@@ -9,6 +9,7 @@ var fs = require("fs");
 var action = process.argv[2];
 var query = process.argv.slice(3).join(" ");
 //console.log(argument, query);
+var spotify = new Spotify(keys.spotify);
 
 switch (action) {
   case "concert-this":
@@ -18,7 +19,6 @@ switch (action) {
 
   case "spotify-this-song":
     //go to spotify
-    var spotify = new Spotify(keys.spotify);
     // console.log(keys.spotify);
     console.log(query);
     spotifySong(query);
@@ -72,7 +72,7 @@ function spotifySong(song) {
       console.log("------------------------------");
     })
     .catch(function(err) {
-      console.log(err);
+      console.log("error");
     });
 }
 
