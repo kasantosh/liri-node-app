@@ -1,7 +1,7 @@
 ## Liri Bot App
 
 LIRI is a Language Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives you back data.
-
+This app is created with javascript and can be run on Node.
 ---
 
 There are 4 different commands from the command-line
