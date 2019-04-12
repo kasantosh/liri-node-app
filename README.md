@@ -7,7 +7,7 @@ LIRI is a Language Interpretation and Recognition Interface. LIRI will be a comm
 There are 4 different commands from the command-line
 
 1. concert-this [singer or band name] -
-   Gives all converts with date, time and venue of the given artist
+   Gives all concert events of the singer/band with date, time and venue of the given artist
 
    ![](/images/concert-this-screenshot.jpg)
 
